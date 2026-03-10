@@ -1,5 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server'
 export const runtime = 'nodejs' 
+export const dynamic = 'force-dynamic'
 export async function GET(req: NextRequest) {
   try {
     const GIFEncoder = (await import('gifencoder')).default
