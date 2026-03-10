@@ -5,8 +5,7 @@ export const runtime = 'nodejs'
 export async function GET(req: NextRequest) {
   try {
     const GIFEncoder = (await import('gifencoder')).default
-    const { createCanvas } = await import('canvas')
-
+const { createCanvas } = await import('@napi-rs/canvas')
     const launch = new Date('2026-03-31T22:00:00Z')
     const now = new Date()
     let diff = Math.floor((launch.getTime() - now.getTime()) / 1000)
