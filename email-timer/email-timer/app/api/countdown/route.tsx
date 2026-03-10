@@ -6,22 +6,16 @@ export async function GET(req: NextRequest) {
   try {
     const GIFEncoder = (await import('gifencoder')).default
     const { createCanvas, GlobalFonts } = await import('@napi-rs/canvas')
-    const { join } = await import('path')
     const { existsSync } = await import('fs')
 
-    const possiblePaths = [
-      join(process.cwd(), 'email-timer/email-timer/Roboto-VariableFont_wdth,wght.ttf'),
-      join(process.cwd(), 'Roboto-VariableFont_wdth,wght.ttf'),
-      '/vercel/path0/email-timer/email-timer/Roboto-VariableFont_wdth,wght.ttf',
-    ]
-
-    for (const p of possiblePaths) {
-      console.log('Trying font path:', p, 'exists:', existsSync(p))
-      if (existsSync(p)) {
-        GlobalFonts.registerFromPath(p, 'Roboto')
-        console.log('Font registered from:', p)
-        break
-      }
+    const fontPath = '/var/task/email-timer/email-timer/Roboto-VariableFont_wdth,wght.ttf'
+    console.log('Font path exists:', existsSync(fontPath))
+    
+    if (existsSync(fontPath)) {
+      GlobalFonts.registerFromPath(fontPath, 'Roboto')
+      console.log('Font registered!')
+    } else {
+      console.log('Font NOT found!')
     }
     console.log('Available fonts:', JSON.stringify(GlobalFonts.families))
 
