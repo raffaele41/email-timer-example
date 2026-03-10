@@ -2,7 +2,9 @@
 const nextConfig = {
   experimental: {
     outputFileTracingIncludes: {
-      './app/api/countdown/route': ['./*.ttf'],
+      '/api/countdown': [
+        './email-timer/email-timer/Roboto-VariableFont_wdth,wght.ttf'
+      ],
     },
   },
   webpack: (config, { isServer }) => {
