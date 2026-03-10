@@ -6,18 +6,12 @@ export async function GET(req: NextRequest) {
   try {
     const GIFEncoder = (await import('gifencoder')).default
     const { createCanvas, GlobalFonts } = await import('@napi-rs/canvas')
-    const { existsSync } = await import('fs')
 
-    const fontPath = '/var/task/email-timer/email-timer/Roboto-VariableFont_wdth,wght.ttf'
-    console.log('Font path exists:', existsSync(fontPath))
-    
-    if (existsSync(fontPath)) {
-      GlobalFonts.registerFromPath(fontPath, 'Roboto')
-      console.log('Font registered!')
-    } else {
-      console.log('Font NOT found!')
-    }
-    console.log('Available fonts:', JSON.stringify(GlobalFonts.families))
+    // Scarica il font da GitHub direttamente
+    const fontResponse = await fetch('https://raw.githubusercontent.com/raffaele41/email-timer-v2/main/email-timer/email-timer/Roboto-VariableFont_wdth%2Cwght.ttf')
+    const fontBuffer = Buffer.from(await fontResponse.arrayBuffer())
+    GlobalFonts.register(fontBuffer, 'Roboto')
+    console.log('Font loaded from GitHub, families:', JSON.stringify(GlobalFonts.families))
 
     const launch = new Date('2026-03-31T22:00:00Z')
     const now = new Date()
