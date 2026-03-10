@@ -42,7 +42,7 @@ const { createCanvas } = await import('@napi-rs/canvas')
 
       // Testo
       ctx.fillStyle = 'white'
-      ctx.font = 'bold 80px Arial'
+      ctx.font = 'bold 80px sans-serif'
       ctx.textAlign = 'center'
       ctx.textBaseline = 'middle'
 
@@ -53,7 +53,7 @@ const { createCanvas } = await import('@napi-rs/canvas')
       ctx.fillText(seconds, 690, 100)
 
       // Labels
-      ctx.font = '18px Arial'
+      ctx.font = '18px sans-serif'
       ctx.fillText('days', 90, 160)
       ctx.fillText('hours', 290, 160)
       ctx.fillText('min', 490, 160)
