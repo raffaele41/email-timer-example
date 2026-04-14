@@ -45,7 +45,7 @@ async function buildFallbackGif(diff: number): Promise<Buffer | null> {
       encoder.setDelay(1000)
       encoder.setQuality(10)
 
-      ctx.fillStyle = '#240709'
+      ctx.fillStyle = '#0A1628'
       ctx.fillRect(0, 0, width, height)
       ctx.fillStyle = 'white'
       ctx.font = 'bold 80px sans-serif'
@@ -76,7 +76,7 @@ export async function GET(req: NextRequest) {
   const job = req.nextUrl.searchParams.get('job') || 'unknown'
   const now = new Date()
 
-  const launch = new Date('2026-04-01T11:00:00Z')
+  const launch = new Date('2026-05-01T11:00:00Z')
   let diff = Math.floor((launch.getTime() - now.getTime()) / 1000)
   if (diff < 0) diff = 0
 
@@ -113,7 +113,7 @@ export async function GET(req: NextRequest) {
         const minutes = String(Math.floor((d % 3600) / 60)).padStart(2, '0')
         const seconds = String(d % 60).padStart(2, '0')
 
-        ctx.fillStyle = '#240709'
+        ctx.fillStyle = '#0A1628'
         ctx.fillRect(0, 0, width, height)
         ctx.fillStyle = 'white'
         ctx.font = `bold 60px ${fontFamily}`
