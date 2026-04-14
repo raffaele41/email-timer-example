@@ -124,10 +124,10 @@ export async function GET(req: NextRequest) {
         ctx.fillText(minutes, 490, 100)
         ctx.fillText(seconds, 690, 100)
         ctx.font = `18px ${fontFamily}`
-        ctx.fillText('ημέρες',  90,  145)
-        ctx.fillText('ώρες', 290, 145)
-        ctx.fillText('λεπτά',   490, 145)
-        ctx.fillText('δευτερόλεπτα',   690, 145)
+        ctx.fillText('days',    90,  145)
+        ctx.fillText('hours',   290, 145)
+        ctx.fillText('min',     490, 145)
+        ctx.fillText('sec',     690, 145)
         ctx.fillStyle = 'white'
         ctx.fillRect(188, 60, 2, 100)
         ctx.fillRect(388, 60, 2, 100)
